@@ -116,13 +116,20 @@ inline void BusDepot::print()
 	
 	cout << "-------- Список автобусов на маршруте --------\n\n";
 
-	Bus* temp = first;
-	while (temp)
+	if (size > 0)
 	{
-		cout << "ID: " << temp->id << " Номер маршрута: " << temp->number << " Кол-во мест: " << temp->seats << endl;
-		temp = temp->next;
+		Bus* temp = first;
+		while (temp)
+		{
+			cout << "ID: " << temp->id << " Номер маршрута: " << temp->number << " Кол-во мест: " << temp->seats << endl;
+			temp = temp->next;
+		}
+		cout << endl;
 	}
-	cout << endl;
+
+	else
+		cout << "На маршруте нет автобусов!\nНо это легко исправить. Меню -> 1\n\n";
+	
 }
 
 inline void BusDepot::push_back(Bus _a)
@@ -155,7 +162,8 @@ inline Bus BusDepot::pop()
 {
 	if (size == 0)
 	{
-		cout << "Очередь пустая!";
+		cout << "Oops!!! На маршруте нет автобусов!";
+		cout << endl;
 		system("pause");
 		exit(1);
 	}
