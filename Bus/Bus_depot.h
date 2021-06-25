@@ -1,6 +1,5 @@
 ﻿#pragma once
 #include"Bus.h"
-#include"Func.h"
 #include <Windows.h>
 
 struct numpunct

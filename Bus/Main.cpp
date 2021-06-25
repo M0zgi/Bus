@@ -2,8 +2,7 @@
 //#include"Queue.h"
 //#include"TemplateArray.h"
 #include"Bus_depot.h"
-#include"Bus.h"
-#include"Func.h"
+//#include"Bus.h"
 
 int main()
 {
