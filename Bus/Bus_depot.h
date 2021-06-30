@@ -64,10 +64,10 @@ inline void BusDepot::menu()
 			cin >> id;
 			cout << "Номер маршрута: ";
 			cin >> number;
-			//cout << "Кол-во пассажирских мест: ";
-			//cin >> seats;
+			cout << "Кол-во пассажирских мест: ";
+			cin >> seats;
 
-			seats = rand() % 25; //кол-во мест, случайная величина
+			//seats = rand() % 25; //кол-во мест, случайная величина
 
 			Bus a(id, number, seats);
 
