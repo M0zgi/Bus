@@ -3,7 +3,6 @@
 #include<iostream>
 using namespace std;
 
-
 class Bus
 {
 public:
@@ -16,7 +15,6 @@ public:
 	Bus(int id) : Bus(id, 0, 0) {};
 	Bus(int _id, int _number, int _seats);
 };
-
 
 inline Bus::Bus()
 {

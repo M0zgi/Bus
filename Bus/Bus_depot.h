@@ -5,7 +5,6 @@
 #include<iomanip>
 #include<string>
 
-
 void gotoxy(int x, int y)
 {
 	COORD coord;
@@ -88,10 +87,8 @@ inline void BusDepot::print_first()
 			cout << "ID: " << temp->id << " Номер маршрута: " << temp->number << " Кол-во мест: " << temp->seats << endl;
 			temp = nullptr;
 		}
-		cout << endl;
-		
-	}
-	
+		cout << endl;		
+	}	
 
 	else
 		cout << "На маршруте нет автобусов!\nНо это легко исправить. Меню -> 1\n\n";

@@ -153,8 +153,6 @@ inline void QueueRing<T>::print() const
 	cout << endl;
 }
 
-
-
 //FIFO очередь по принципу "Кто первый пришел, тот первый ушел"
 template<class T>
 class Queue

@@ -1,14 +1,11 @@
 ﻿#include"Bus_depot.h"
 #include"BusStop.h"
-
 #include<ctime>
 #include<iostream>
 using namespace std;
-//#include"Bus.h"
 
 int main()
 {
-
 	srand(time(0));
 
 	SetConsoleCP(1251);
@@ -19,7 +16,6 @@ int main()
 	locale loc(cout.getloc(), new ::numpunct);
 	cout.imbue(loc);
 
-	//string fName[] = { "zvit.xls", "otchet.doc", "file1.txt", "foto.jpg", "presentation.ppt" };
 	string cat[] = { "Ветеран АТО", "Пенсионер", "Ученик", "Инвалид", "Другие" };
 
 	int timebus = 0;
@@ -42,7 +38,6 @@ int main()
 		cout << "Остановка: " << stopname << "\nОбслуживающая компания: " << compname << endl;
 		cout << "1. Добавить автобус на маршрут.\n";
 		cout << "2. Снять автобус с маршрута (первый в очереди).\n";
-		//cout << "3. Снять автобус с маршрута (по ID).\n";
 		cout << "3. Показать движение автобусов по маршруту.\n";
 		cout << "4. Показать автобусы на маршруте.\n";
 		cout << "5. Выход.\n\n";
@@ -83,7 +78,6 @@ int main()
 			break;
 		}
 
-
 		case 3:
 		{			
 			system("cls");					
@@ -110,8 +104,6 @@ int main()
 
 					gotoxy(40, 4);
 					cout << "Кол-во свободных мест: " << freeseats << endl << endl;
-					
-					//system("pause");
 
 					if (bs.getSize() > freeseats)
 					{
@@ -130,32 +122,12 @@ int main()
 				}
 
 				t++;
-				Sleep(1000);
+				Sleep(1000);				
 
-				
-
-				
-
-			} while (Stop != '0');
-
-		
+			} while (Stop != '0');		
 
 			break;
 		}
-
-		/*	case 3:
-			{
-				system("cls");
-				int id;
-
-				cout << "Снять автобус с маршрута (по ID).\n";
-				cout << "Введите ID: ";
-				cin >> id;
-
-				pop_id(id);
-
-				break;
-			}*/
 
 		case 4:
 		{
