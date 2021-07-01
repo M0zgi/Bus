@@ -1,10 +1,10 @@
-#pragma once
+п»ї#pragma once
 #include"MyData.h"
 
 #include<iostream>
 using namespace std;
 
-//QueueRing кольцевая очередь по принципу "элемент, который выходит из начала очереди, будет перемещён в её конец."
+//QueueRing РєРѕР»СЊС†РµРІР°СЏ РѕС‡РµСЂРµРґСЊ РїРѕ РїСЂРёРЅС†РёРїСѓ "СЌР»РµРјРµРЅС‚, РєРѕС‚РѕСЂС‹Р№ РІС‹С…РѕРґРёС‚ РёР· РЅР°С‡Р°Р»Р° РѕС‡РµСЂРµРґРё, Р±СѓРґРµС‚ РїРµСЂРµРјРµС‰С‘РЅ РІ РµС‘ РєРѕРЅРµС†."
 
 template<class T>
 class QueueRing
@@ -17,7 +17,7 @@ public:
 	~QueueRing();
 	void push(T val);
 	T pop();
-	T pop_front();//извлечение первого элемента
+	T pop_front();//РёР·РІР»РµС‡РµРЅРёРµ РїРµСЂРІРѕРіРѕ СЌР»РµРјРµРЅС‚Р°
 	T peek();
 	int getSize();
 	void clear();
@@ -56,7 +56,7 @@ inline T QueueRing<T>::pop()
 {
 	if (size == 0)
 	{
-		cout << "Очередь пустая!";
+		cout << "РћС‡РµСЂРµРґСЊ РїСѓСЃС‚Р°СЏ!";
 		system("pause");
 		exit(1);
 	}
@@ -85,7 +85,7 @@ inline T QueueRing<T>::pop_front()
 {
 	if (size == 0)
 	{
-		cout << "Очередь пустая!";
+		cout << "РћС‡РµСЂРµРґСЊ РїСѓСЃС‚Р°СЏ!";
 		system("pause");
 		exit(1);
 	}
@@ -121,7 +121,7 @@ inline T QueueRing<T>::peek()
 
 	else
 	{
-		cout << "Очередь пустая!";
+		cout << "РћС‡РµСЂРµРґСЊ РїСѓСЃС‚Р°СЏ!";
 		system("pause");
 		exit(1);
 	}
@@ -155,7 +155,7 @@ inline void QueueRing<T>::print() const
 
 
 
-//FIFO очередь по принципу "Кто первый пришел, тот первый ушел"
+//FIFO РѕС‡РµСЂРµРґСЊ РїРѕ РїСЂРёРЅС†РёРїСѓ "РљС‚Рѕ РїРµСЂРІС‹Р№ РїСЂРёС€РµР», С‚РѕС‚ РїРµСЂРІС‹Р№ СѓС€РµР»"
 template<class T>
 class Queue
 {
@@ -205,7 +205,7 @@ inline T Queue<T>::pop()
 {
 	if (size == 0)
 	{
-		cout << "Очередь пустая!";
+		cout << "РћС‡РµСЂРµРґСЊ РїСѓСЃС‚Р°СЏ!";
 		system("pause");
 		exit(1);
 	}
@@ -240,7 +240,7 @@ inline T Queue<T>::peek()
 
 	else
 	{
-		cout << "Очередь пустая!";
+		cout << "РћС‡РµСЂРµРґСЊ РїСѓСЃС‚Р°СЏ!";
 		system("pause");
 		exit(1);
 	}
@@ -279,7 +279,7 @@ inline bool Queue<T>::isEmpty()
 }
 
 
-//Очередь с приоритетом
+//РћС‡РµСЂРµРґСЊ СЃ РїСЂРёРѕСЂРёС‚РµС‚РѕРј
 
 
 template<class T>
@@ -294,8 +294,8 @@ public:
 	void push(T val, PRIORITY pri);
 	T pop();
 	T peek();
-	int getSize();     //получение текущего размера
-	void clear();      //очистка стека
+	int getSize();     //РїРѕР»СѓС‡РµРЅРёРµ С‚РµРєСѓС‰РµРіРѕ СЂР°Р·РјРµСЂР°
+	void clear();      //РѕС‡РёСЃС‚РєР° СЃС‚РµРєР°
 	void print() const;
 	bool isEmpty();
 };

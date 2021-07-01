@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include"MyData.h"
 #include"QueuePriority.h"
 #include<iomanip>
@@ -16,7 +16,7 @@ public:
 	People(string c, int t):category(c), wait(t) {}
 	int getTimeWait();
 	void setTimeWait(int t);
-	//PRIORITY getPrioryty() const; //если нужно с приориетом
+	//PRIORITY getPrioryty() const; //РµСЃР»Рё РЅСѓР¶РЅРѕ СЃ РїСЂРёРѕСЂРёРµС‚РѕРј
 
 	friend ostream& operator <<(ostream& out, const People& obj);
 };
@@ -37,17 +37,17 @@ ostream& operator<<(ostream& out, const People& obj)
 	return out;
 }
 
-////если нужно с приориетом
+////РµСЃР»Рё РЅСѓР¶РЅРѕ СЃ РїСЂРёРѕСЂРёРµС‚РѕРј
 //inline PRIORITY People::getPrioryty() const
 //{
 //
-//	if (category == "Пенсионер" || category == "Инвалид")
+//	if (category == "РџРµРЅСЃРёРѕРЅРµСЂ" || category == "РРЅРІР°Р»РёРґ")
 //		return MEGAHIGH;
 //
-//	if (category == "Другие")
+//	if (category == "Р”СЂСѓРіРёРµ")
 //		return HIGH;
 //
-//	if (category == "Ветеран АТО")
+//	if (category == "Р’РµС‚РµСЂР°РЅ РђРўРћ")
 //		return MEDIUM;
 //	
 //	return LOW;
@@ -90,10 +90,10 @@ void BusStop::start()
 {			
 	system("cls");
 	qpl.print();
-	cout << "Кол-во людей в очереди: " << qpl.getSize();
+	cout << "РљРѕР»-РІРѕ Р»СЋРґРµР№ РІ РѕС‡РµСЂРµРґРё: " << qpl.getSize();
 	cout << endl;
 	static int timer = 0;
-	cout << "Таймер: " << timer;
+	cout << "РўР°Р№РјРµСЂ: " << timer;
 	timer++;
 }
 
@@ -114,7 +114,7 @@ void BusStop::start()
 //	int getTimePrint();
 //	void setTimePrint(int t);
 //	
-//	//PRIORITY getPriority() const;//если нужно с приориетом
+//	//PRIORITY getPriority() const;//РµСЃР»Рё РЅСѓР¶РЅРѕ СЃ РїСЂРёРѕСЂРёРµС‚РѕРј
 //
 //	friend ostream& operator <<(ostream& out, const TaskPrint& obj);
 //
@@ -131,15 +131,15 @@ void BusStop::start()
 //	timePrint = t;
 //}
 //
-////если нужно с приориетом
+////РµСЃР»Рё РЅСѓР¶РЅРѕ СЃ РїСЂРёРѕСЂРёРµС‚РѕРј
 ////inline PRIORITY TaskPrint::getPriority() const
 ////{
-////	if (department == "Пенсионер" || department == "Инвалид")
+////	if (department == "РџРµРЅСЃРёРѕРЅРµСЂ" || department == "РРЅРІР°Р»РёРґ")
 ////		return MEGAHIGH;
 ////
-////	if (department == "Другие")
+////	if (department == "Р”СЂСѓРіРёРµ")
 ////		return HIGH;
-////	if (department == "Ветеран АТО")
+////	if (department == "Р’РµС‚РµСЂР°РЅ РђРўРћ")
 ////		return MEDIUM;
 ////	return LOW;
 ////}
@@ -153,7 +153,7 @@ void BusStop::start()
 //class PrintServer
 //{
 //	string ip;
-//	//QueuePriority<TaskPrint> qPrint; //если нужно с приоритетом раскомментировать
+//	//QueuePriority<TaskPrint> qPrint; //РµСЃР»Рё РЅСѓР¶РЅРѕ СЃ РїСЂРёРѕСЂРёС‚РµС‚РѕРј СЂР°СЃРєРѕРјРјРµРЅС‚РёСЂРѕРІР°С‚СЊ
 //	Queue<TaskPrint> qPrint;
 //	TaskPrint currPrint;
 //
@@ -164,7 +164,7 @@ void BusStop::start()
 //	void work();
 //};
 //
-////если нужно с приоритетом раскомментировать
+////РµСЃР»Рё РЅСѓР¶РЅРѕ СЃ РїСЂРёРѕСЂРёС‚РµС‚РѕРј СЂР°СЃРєРѕРјРјРµРЅС‚РёСЂРѕРІР°С‚СЊ
 ////void PrintServer::addTaskPrint(const TaskPrint& tp)
 ////{
 ////	qPrint.push(tp, tp.getPriority());
