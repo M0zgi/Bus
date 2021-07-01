@@ -140,7 +140,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Bus.h" />
+    <ClInclude Include="BusStop.h" />
     <ClInclude Include="Bus_depot.h" />
+    <ClInclude Include="MyData.h" />
+    <ClInclude Include="QueuePriority.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
