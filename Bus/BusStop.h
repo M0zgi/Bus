@@ -33,7 +33,7 @@ void People::setTimeWait(int t)
 
 ostream& operator<<(ostream& out, const People& obj)
 {
-	out << left << setw(15) << obj.category << setw(15) << obj.wait;
+	out << left << setw(15) << obj.category;
 	return out;
 }
 
