@@ -1,6 +1,7 @@
 ﻿#include"Bus_depot.h"
 #include"BusStop.h"
 
+#include<ctime>
 #include<iostream>
 using namespace std;
 //#include"Bus.h"
@@ -8,7 +9,7 @@ using namespace std;
 int main()
 {
 
-	
+	srand(time(0));
 
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
@@ -38,7 +39,7 @@ int main()
 	{
 		system("cls");
 
-		cout << "Остановка: " << stopname << "Обслуживающая компания: " << compname << endl;
+		cout << "Остановка: " << stopname << "\nОбслуживающая компания: " << compname << endl;
 		cout << "1. Добавить автобус на маршрут.\n";
 		cout << "2. Снять автобус с маршрута (первый в очереди).\n";
 		//cout << "3. Снять автобус с маршрута (по ID).\n";
@@ -69,8 +70,6 @@ int main()
 			cout << "Кол-во пассажирских мест: ";
 			cin >> seats;
 
-			//seats = rand() % 25; //кол-во мест, случайная величина
-
 			Bus a(id, number, seats);
 
 			bd.push_back(a);
@@ -81,7 +80,6 @@ int main()
 		case 2:
 		{
 			bd.pop();
-			//pop_queue();
 			break;
 		}
 
@@ -91,41 +89,56 @@ int main()
 			system("cls");					
 			
 			int t = 0;
+			char Stop = '1';
 
-			while (true)
-			{
-				if (t!=0 && t % 30 == 0)
+			do {
+
+				int m = rand() % 1 + 2;
+
+				if (t % m == 0)
+
+					bs.addPeople(People(cat[rand() % 5], 0));
+
+				bs.start();
+
+				if (t != 0 && t % 30 == 0)
 				{
+
+					int freeseats = bd.getseats() - rand() % 7;
+
+					bd.print_first();
+
+					gotoxy(40, 4);
+					cout << "Кол-во свободных мест: " << freeseats << endl << endl;
 					
-					int freeseats = bd.getseats() % 1 + 10;				
-				
-					gotoxy(40, 5);
-					bd.print_first();		
-					
-					cout << bd[0].seats;
+					//system("pause");
+
 					if (bs.getSize() > freeseats)
 					{
 						bs.popPeople(freeseats);
 					}
 
-					else 					
+					else
 					{
 						bs.popPeople(bs.getSize());
 					}
-										
+
 					bd.pop_queue();
+					gotoxy(40, 6);
+					cout << "Укажите 0 для возврата к меню: ";
+					cin >> Stop;
 				}
-				
-				int m = rand() % 1 + 5;				
 
-				if (t % m == 0)					
-
-				bs.addPeople(People(cat[rand() % 5], 0));
-
-				bs.start();
 				t++;
 				Sleep(1000);
-			}
+
+				
+
+				
+
+			} while (Stop != '0');
+
+		
 
 			break;
 		}

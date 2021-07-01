@@ -76,7 +76,7 @@ inline void BusDepot::print()
 inline void BusDepot::print_first()
 {
 	
-	gotoxy(40, 1);
+	gotoxy(40, 0);
 	cout << "-------- Приехал автобус --------\n\n";
 
 	if (size > 0)
@@ -84,15 +84,18 @@ inline void BusDepot::print_first()
 		Bus* temp = first;
 		while (temp)
 		{
-			gotoxy(40, 2);
+			gotoxy(40, 1);
 			cout << "ID: " << temp->id << " Номер маршрута: " << temp->number << " Кол-во мест: " << temp->seats << endl;
 			temp = nullptr;
 		}
 		cout << endl;
+		
 	}
+	
 
 	else
 		cout << "На маршруте нет автобусов!\nНо это легко исправить. Меню -> 1\n\n";
+	gotoxy(40, 2);
 }
 
 inline void BusDepot::push_back(Bus _a)

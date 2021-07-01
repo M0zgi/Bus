@@ -1,15 +1,15 @@
 ﻿#pragma once
 #include"MyData.h"
+#include"Bus_depot.h"
 #include"QueuePriority.h"
 #include<iomanip>
 #include<iostream>
 #include<string>
 
-
 class People
 {
 	string category;
-	int wait;
+	int wait = 0;
 
 public:
 	People(){}
@@ -33,7 +33,7 @@ void People::setTimeWait(int t)
 
 ostream& operator<<(ostream& out, const People& obj)
 {
-	out << left << setw(15) << obj.category;
+	out << left << setw(15) << obj.category << setw(15) << obj.wait;
 	return out;
 }
 
@@ -58,6 +58,7 @@ class BusStop
 	string stopname;
 	Queue<People> qpl;
 	People currWait;
+	//QueueRing<People> qrpl;
 
 public:
 
@@ -81,20 +82,28 @@ inline void BusStop::popPeople(int s)
 	}
 }
 
+
 inline int BusStop::getSize()
 {
 	return qpl.getSize();
 }
 
+
 void BusStop::start()
 {			
-	system("cls");
+	system("cls");	
+
+	static int timer = 0;
+
+	cout << "Остановка: " << stopname << endl;
 	qpl.print();
 	cout << "Кол-во людей в очереди: " << qpl.getSize();
 	cout << endl;
-	static int timer = 0;
-	cout << "Таймер: " << timer;
+	cout << "Максимальное вермя ожидания автобуса: " << timer << " минут";
 	timer++;
+
+	if (!qpl.getSize() || qpl.getSize() == 1)
+		timer = 0;
 }
 
 

@@ -76,7 +76,7 @@ inline T QueueRing<T>::pop()
 		last = temp;
 		temp->next = nullptr;
 	}
-
+	
 	return val;
 }
 
@@ -171,6 +171,7 @@ public:
 	int getSize();
 	void clear();
 	void print() const;
+	
 	bool isEmpty();
 };
 
