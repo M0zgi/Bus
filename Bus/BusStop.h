@@ -97,7 +97,7 @@ void BusStop::start()
 	qpl.print();
 	cout << "Кол-во людей в очереди: " << qpl.getSize();
 	cout << endl;
-	cout << "Максимальное вермя ожидания автобуса: " << timer << " минут";
+	cout << "Максимальное вермя ожидания в очереди: " << timer << " минут";
 	timer++;
 
 	if (!qpl.getSize() || qpl.getSize() == 1)
