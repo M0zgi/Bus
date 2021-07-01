@@ -87,7 +87,7 @@ int main()
 
 			do {
 
-				int m = rand() % 1 + 3;
+				int m = rand() % 1 + 2;
 
 				if (t % m == 0)
 
