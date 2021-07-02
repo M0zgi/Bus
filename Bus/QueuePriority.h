@@ -166,10 +166,11 @@ public:
 	void push(T val);
 	T pop();
 	T peek();
+	T &peekwait();
+	T operator[](int ind);
 	int getSize();
 	void clear();
 	void print() const;
-	
 	bool isEmpty();
 };
 
@@ -246,6 +247,33 @@ inline T Queue<T>::peek()
 }
 
 template<class T>
+inline T& Queue<T>::peekwait()
+{
+	if (size > 0)
+	{
+		return first->value;
+	}
+
+	else
+	{
+		cout << "Очередь пустая!";
+		system("pause");
+		exit(1);
+	}
+}
+
+template<class T>
+inline T Queue<T>::operator[](int ind)
+{
+	MyData<T>* temp = first;
+	for (size_t i = 0; i < ind; i++)
+	{
+		temp = temp->next;
+	}
+	return temp->value;
+}
+
+template<class T>
 inline int Queue<T>::getSize()
 {
 	return size;
@@ -270,6 +298,7 @@ inline void Queue<T>::print() const
 	}
 	cout << endl;
 }
+
 
 template<class T>
 inline bool Queue<T>::isEmpty()
