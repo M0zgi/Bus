@@ -172,6 +172,7 @@ public:
 	void clear();
 	void print() const;
 	bool isEmpty();
+	void superMethod();
 };
 
 template<class T>

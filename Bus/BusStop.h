@@ -1,10 +1,18 @@
 ﻿#pragma once
+#define _CRT_SECURE_NO_WARNINGS
+
 #include"MyData.h"
 #include"Bus_depot.h"
 #include"QueuePriority.h"
 #include<iomanip>
-#include<iostream>
-#include<string>
+#include <Windows.h>
+#include <string.h>
+#include <conio.h>
+#include<ctime>
+#include <iostream>
+
+
+
 
 class People
 {
@@ -16,7 +24,7 @@ public:
 	People(string c, int t):category(c), wait(t) {}
 	int getTimeWait();
 	void setTimeWait(int t);
-
+	int timeWait = 0;
 	//PRIORITY getPrioryty() const; //если нужно с приориетом
 
 	friend ostream& operator <<(ostream& out, const People& obj);
@@ -34,7 +42,8 @@ void People::setTimeWait(int t)
 
 ostream& operator<<(ostream& out, const People& obj)
 {
-	out << left << setw(15) << obj.category;// << setw(5) << obj.wait;
+	
+	out << left << setw(15) << obj.category << setw(5) << obj.timeWait;// << setw(5) << obj.wait;
 	return out;
 }
 
@@ -63,6 +72,7 @@ class BusStop
 
 public:
 
+	BusStop() {}
 	BusStop(string stopname) : stopname(stopname){}
 	void addPeople(const People& pl);
 	void popPeople(int s);
@@ -88,13 +98,7 @@ inline void BusStop::popPeople(int s)
 
 inline void BusStop::PeopleWait(int t)
 {
-	currWait = qpl.peekwait();
-
-
-	//for (int i = 0; i < qpl.getSize(); i++)
-	//{
-		currWait.setTimeWait(currWait.getTimeWait() + t);
-	//}
+	//qpl.peek();
 	
 }
 
@@ -108,18 +112,50 @@ void BusStop::start()
 {			
 	system("cls");	
 
-	static int timer = 0;
+	
 
+	static int timer = 0;
+	if (qpl.getSize())
+	{
+	currWait = qpl.peek();
 	cout << "Остановка: " << stopname << endl << endl;
+	cout << left << setw(15) << "Пассажир: " << setw(5) << "Время ожидания:" << endl;
 	qpl.print();
 	cout << "Кол-во людей в очереди: " << qpl.getSize();
 	cout << endl;
-	cout << "Максимальное вермя ожидания в очереди: " << timer << " минут";	
-	
-	//PeopleWait(timer);	
-	
+	cout << "Максимальное время ожидания первого пассажира в очереди: " << currWait.timeWait << " минут" << endl << endl;
+	cout << "Общее время движения автобусов: " << timer << " минут" << endl;
 	timer++;
+	qpl.superMethod();
+	}
+	
+	else
+	{
+		cout << "Очередь пустая! На остановке нет пассажиров. Все уехали\n";
+	}
 
-	if (!qpl.getSize() || qpl.getSize() == 1)
-		timer = 0;
 }
+
+template<>
+inline void Queue<People>::superMethod()
+{
+	
+	MyData<People>* temp = first;
+	while (temp)
+	{
+		temp->value.timeWait++;
+		temp = temp->next;
+	}		
+}
+
+//-----------------------------------------------------------------------------------------------
+
+void gotoxy(int, int);
+
+void ChangeCursorStatus(bool);
+void MenuFun1();
+void MenuFun2();
+void MenuFun3();
+void MenuFun4();
+void ExitOption();
+//-----------------------------------------------------------------------------------------------

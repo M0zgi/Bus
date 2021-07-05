@@ -1,17 +1,18 @@
 ﻿#pragma once
 #include"Bus.h"
+#include"BusStop.h"
 #include"QueuePriority.h"
 #include <Windows.h>
 #include<iomanip>
 #include<string>
 
-void gotoxy(int x, int y)
-{
-	COORD coord;
-	coord.X = x;
-	coord.Y = y;
-	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
-}
+//void gotoxy(int x, int y)
+//{
+//	COORD coord;
+//	coord.X = x;
+//	coord.Y = y;
+//	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+//}
 
 struct numpunct
 	: std::numpunct<char>
@@ -33,9 +34,12 @@ private:
 
 public:
 	~BusDepot();
+	BusDepot() {}
 	BusDepot(string BusDepotName) :BusDepotName(BusDepotName) {}
 	void print();
+	int getSize();
 	void print_first();
+	void peek_first();
 	void push_back(Bus _a);
 	Bus pop();
 	Bus pop_queue();
@@ -54,23 +58,38 @@ inline void BusDepot::print()
 {
 	system("cls"); 
 	
-	cout << "-------- Список автобусов на маршруте --------\n\n";
+	gotoxy(25, 7);
+	cout << "---------- Список автобусов на маршруте ----------\n\n";
+
+	int i = 0;
 
 	if (size > 0)
 	{
 		Bus* temp = first;
 		while (temp)
 		{
+			gotoxy(25, 8 + i);
 			cout << "ID: " << temp->id << " Номер маршрута: " << temp->number << " Кол-во мест: " << temp->seats << endl;
 			temp = temp->next;
+			i++;
 		}
 		cout << endl;
 	}
 
 	else
-		cout << "На маршруте нет автобусов!\nНо это легко исправить. Меню -> 1\n\n";
-	
+	{
+		gotoxy(25, 8);
+		cout << "На маршруте нет автобусов! Но это легко исправить. Меню -> 1\n\n";
+	}
+		
 }
+
+inline int BusDepot::getSize()
+{
+	return size;
+}
+
+
 
 inline void BusDepot::print_first()
 {
@@ -82,8 +101,8 @@ inline void BusDepot::print_first()
 	{
 		Bus* temp = first;
 		while (temp)
-		{
-			gotoxy(40, 1);
+		{			
+			gotoxy(40, 2);
 			cout << "ID: " << temp->id << " Номер маршрута: " << temp->number << " Кол-во мест: " << temp->seats << endl;
 			temp = nullptr;
 		}
@@ -91,8 +110,32 @@ inline void BusDepot::print_first()
 	}	
 
 	else
-		cout << "На маршруте нет автобусов!\nНо это легко исправить. Меню -> 1\n\n";
-	gotoxy(40, 2);
+	{
+		gotoxy(40, 0);
+		cout << "На маршруте нет автобусов! Но это легко исправить. Меню -> 1\n\n";
+	}
+		
+}
+
+inline void BusDepot::peek_first()
+{
+	gotoxy(25, 7);
+	cout << "---------- Следующий автобус был снят с маршрута: -----------\n";
+
+	if (size > 0)
+	{
+		Bus* temp = first;
+		
+		gotoxy(25, 8);
+		cout << "ID: " << temp->id << " Номер маршрута: " << temp->number << " Кол-во мест: " << temp->seats << endl;		
+	}
+
+	else
+	{
+		gotoxy(25, 9);
+		cout << "На маршруте нет автобусов! Но это легко исправить. Меню -> 1\n\n";
+	}
+		
 }
 
 inline void BusDepot::push_back(Bus _a)
@@ -125,6 +168,7 @@ inline Bus BusDepot::pop()
 {
 	if (size == 0)
 	{
+		gotoxy(25, 7);
 		cout << "Oops!!! На маршруте нет автобусов!";
 		cout << endl;
 		system("pause");
@@ -156,6 +200,7 @@ inline Bus BusDepot::pop_queue()
 	
 	if (size == 0)
 	{
+		gotoxy(25, 7);
 		cout << "Oops!!! На маршруте нет автобусов!";
 		cout << endl;
 		system("pause");
