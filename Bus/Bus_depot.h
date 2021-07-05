@@ -2,9 +2,9 @@
 #include"Bus.h"
 #include"BusStop.h"
 #include"QueuePriority.h"
-#include <Windows.h>
-#include<iomanip>
-#include<string>
+//#include <Windows.h>
+//#include<iomanip>
+//#include<string>
 
 //void gotoxy(int x, int y)
 //{
@@ -24,8 +24,7 @@ struct numpunct
 
 class BusDepot
 {
-private:
-	//Bus* buss = nullptr;
+private:	
 	string BusDepotName;
 	Bus* first = nullptr;
 	Bus* last = nullptr;
@@ -43,8 +42,7 @@ public:
 	void push_back(Bus _a);
 	Bus pop();
 	Bus pop_queue();
-	int getseats();
-	//Bus pop_id(int _id);
+	int getseats();	
 	Bus operator[](int ind);
 	void clear();
 };

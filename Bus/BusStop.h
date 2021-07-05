@@ -11,8 +11,7 @@
 #include<ctime>
 #include <iostream>
 
-
-
+using namespace std;
 
 class People
 {
@@ -67,8 +66,7 @@ class BusStop
 {
 	string stopname;
 	Queue<People> qpl;
-	People currWait;
-	//QueueRing<People> qrpl;
+	People currWait;	
 
 public:
 
@@ -78,9 +76,7 @@ public:
 	void popPeople(int s);
 	void PeopleWait(int t);
 	int getSize();
-	void start();
-	
-	
+	void start();	
 };
 
 inline void BusStop::addPeople(const People &pl)
@@ -96,13 +92,6 @@ inline void BusStop::popPeople(int s)
 	}
 }
 
-inline void BusStop::PeopleWait(int t)
-{
-	//qpl.peek();
-	
-}
-
-
 inline int BusStop::getSize()
 {
 	return qpl.getSize();
@@ -110,36 +99,33 @@ inline int BusStop::getSize()
 
 void BusStop::start()
 {			
-	system("cls");	
-
-	
+	system("cls");		
 
 	static int timer = 0;
+
 	if (qpl.getSize())
 	{
-	currWait = qpl.peek();
-	cout << "Остановка: " << stopname << endl << endl;
-	cout << left << setw(15) << "Пассажир: " << setw(5) << "Время ожидания:" << endl;
-	qpl.print();
-	cout << "Кол-во людей в очереди: " << qpl.getSize();
-	cout << endl;
-	cout << "Максимальное время ожидания первого пассажира в очереди: " << currWait.timeWait << " минут" << endl << endl;
-	cout << "Общее время движения автобусов: " << timer << " минут" << endl;
-	timer++;
-	qpl.superMethod();
+		currWait = qpl.peek();
+		cout << "Остановка: " << stopname << endl << endl;
+		cout << left << setw(15) << "Пассажир: " << setw(5) << "Время ожидания:" << endl;
+		qpl.print();
+		cout << "Кол-во людей в очереди: " << qpl.getSize();
+		cout << endl;
+		cout << "Максимальное время ожидания первого пассажира в очереди: " << currWait.timeWait << " минут" << endl << endl;
+		cout << "Общее время движения автобусов: " << timer << " минут" << endl;
+		timer++;
+		qpl.superMethod();
 	}
 	
 	else
 	{
 		cout << "Очередь пустая! На остановке нет пассажиров. Все уехали\n";
 	}
-
 }
 
 template<>
 inline void Queue<People>::superMethod()
-{
-	
+{	
 	MyData<People>* temp = first;
 	while (temp)
 	{
