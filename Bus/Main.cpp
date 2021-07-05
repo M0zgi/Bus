@@ -143,15 +143,15 @@ void MenuFun1()
 	int id;
 	int number;
 	int seats;
-	gotoxy(25, 9);
+	gotoxy(25, 7);
 	cout << "---------- Добавление автобуса на маршрут. -----------\n";
-	gotoxy(36, 10);
+	gotoxy(36, 8);
 	cout << "ID: ";
 	cin >> id;
-	gotoxy(36, 11);
+	gotoxy(36, 9);
 	cout << "Номер маршрута: ";
 	cin >> number;
-	gotoxy(36, 12);
+	gotoxy(36, 10);
 	cout << "Кол-во пассажирских мест: ";
 	cin >> seats;
 
